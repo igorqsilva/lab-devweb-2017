@@ -30,9 +30,27 @@ public class AlunoDao {
 	}
 
 	public static void alterar(String matricula, String nome) {
+		// Obter "conexão".
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		
+		Aluno aluno = new Aluno();
+		aluno.setMatricula(matricula);
+		aluno.setNome(nome);
+		
+		em.merge(aluno);
+		em.getTransaction().commit();
+
 	}
 
 	public static void excluir(String matricula) {
+		// Obter "conexão".
+		EntityManager em = emf.createEntityManager();
+		Aluno aluno = em.find(Aluno.class, matricula);
+
+		em.getTransaction().begin();
+		em.remove(aluno);
+		em.getTransaction().commit();
 	}
 
 	public static List<Aluno> listar() {
@@ -44,4 +62,3 @@ public class AlunoDao {
 		return result;
 	}
 }
-

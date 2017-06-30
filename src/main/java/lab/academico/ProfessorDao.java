@@ -30,9 +30,27 @@ public class ProfessorDao {
 	}
 
 	public static void alterar(String matricula, String nome) {
+		// Obter "conexão".
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		
+		Professor professor = new Professor();
+		professor.setMatricula(matricula);
+		professor.setNome(nome);
+		
+		em.merge(professor);
+		em.getTransaction().commit();
+
 	}
 
 	public static void excluir(String matricula) {
+		// Obter "conexão".
+		EntityManager em = emf.createEntityManager();
+		Professor professor = em.find(Professor.class, matricula);
+
+		em.getTransaction().begin();
+		em.remove(professor);
+		em.getTransaction().commit();
 	}
 
 	public static List<Professor> listar() {

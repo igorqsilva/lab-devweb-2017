@@ -12,7 +12,7 @@
     <form>
       <table>
         <tr>
-          <td>MatrÃ­cula</td>
+          <td>Matrícula</td>
           <td><input name="matricula"></td>
         </tr>
         <tr>
@@ -28,13 +28,13 @@
     <hr>
     <table border="1">
       <tr>
-        <th>MatrÃ­cula</th>
+        <th>Matrícula</th>
         <th>Nome</th>
-        <th>AÃ§Ãµes</th>
+        <th>Ações</th>
       </tr>
       <%
       ArrayList<Aluno> alunos =
-        (ArrayList<Aluno>) request.getAttribute("alunoses");
+        (ArrayList<Aluno>) request.getAttribute("alunos");
       for (Aluno aluno : alunos) {
       %>
       <tr>
